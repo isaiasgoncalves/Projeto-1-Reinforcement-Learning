@@ -7,6 +7,7 @@ from .robot import Robot
 
 class Agent:
     def __init__(self, appr = cf.APPR, gamma = cf.GAMMA, epsilon = cf.EPSILON):
+
         self.appr = appr   # Taxa de aprendizado
         self.gamma = gamma # Fator de desconto
         self.epsilon = epsilon # Probabilidade de exploração
@@ -60,6 +61,7 @@ class Agent:
         
         # Atualiza o valor antigo na direção do novo
         new_value = old_value + self.appr * (new_estimate - old_value)
+        
         self.q_table[current_battery_state][action] = new_value
 
 

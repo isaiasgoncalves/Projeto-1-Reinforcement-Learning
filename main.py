@@ -1,7 +1,6 @@
 """Arquivo principal de treinamento do nosso agente"""
 import numpy as np
 
-from src.robot import Robot
 from src.agent import Agent
 from src.analytic_utils import AnalyticUtils
 import config as cf

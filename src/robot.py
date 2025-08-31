@@ -12,7 +12,7 @@ class Robot:
 
     def search(self):
         if self.battery == "high":
-            if np.random.random() > cf.ALPHA:
+            if np.random.random() <= cf.ALPHA:
                 # Mantém bateria alta
                 self.total_reward += cf.RSearch
                 self.last_action = "search"
@@ -28,7 +28,7 @@ class Robot:
                 return cf.RSearch
 
         else:
-            if np.random.random() > cf.BETA:
+            if np.random.random() <= cf.BETA:
                 # Mantém bateria no low
                 self.total_reward += cf.RSearch
                 self.last_action = "search"
@@ -58,7 +58,7 @@ class Robot:
             raise Exception("Por alguma razão o robô tentou recarregar com bateria alta")
         
         self.last_action = "recharge"
-        self.last_reward = 0
+        self.last_reward = 0    
         self.battery = "high"
         
         return 0
