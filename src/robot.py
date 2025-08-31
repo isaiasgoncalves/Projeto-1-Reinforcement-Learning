@@ -21,7 +21,6 @@ class Robot:
 
             else:
                 # Bateria cai para low
-                # Mantém bateria alta
                 self.total_reward += cf.RSearch
                 self.last_action = "search"
                 self.battery = "low"
