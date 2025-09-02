@@ -196,7 +196,7 @@ Se $r_{wait}$ sobe muito, wait pode vencer (especialmente se voltar ao high for 
 
 ### Resultados obtidos
 
-**Caso 1**
+**Exemplo dos parâmetros escolhidos:**
 
 ```
 ALPHA = .7
