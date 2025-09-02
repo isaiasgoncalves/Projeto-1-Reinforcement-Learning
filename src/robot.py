@@ -5,6 +5,11 @@ import numpy as np
 
 class Robot:
     def __init__(self):
+        """
+        Inicializa um novo robô (ambiente).
+        Sempre começa com bateria alta, e sem histórico de recompensas e ações.
+        """
+
         self.battery = "high"
         self.last_action = None
         self.total_reward = 0

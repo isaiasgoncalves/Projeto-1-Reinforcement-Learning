@@ -8,6 +8,11 @@ from .robot import Robot
 class Agent:
     def __init__(self, appr = cf.APPR, gamma = cf.GAMMA, epsilon = cf.EPSILON):
 
+        """
+        Inicializa um agente a ser treinado, com seus hiperparâmetros de taxa de aprendizado, fator de desconto e probabilidade de exploração.
+        Ele é iniciado com uma matriz de valores estado x ação zerada, que será modificada conforme o agente aprende.
+        """
+
         self.appr = appr   # Taxa de aprendizado
         self.gamma = gamma # Fator de desconto
         self.epsilon = epsilon # Probabilidade de exploração

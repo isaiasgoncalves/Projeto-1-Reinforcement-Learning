@@ -167,5 +167,60 @@ Por fim, o método `Agent.learn()`, representa uma época de aprendizado do agen
 Já o arquivo `analytic_utils.py` contém métodos responsáveis por gerar os arquivos de resultado, o `rewards.txt` e os dois gráficos salvos como imagem no diretório.
 
 
+### Resultados esperados
+
+$\alpha$ e $\beta$ (do ambiente) e $r_{search}$, $r_{wait}$, penalidade de resgate definem o próprio MDP. Se alterarmos esses números, mudamos o “mundo” onde o robô aprende.
+Como consequência, mudam:
+
+* a política ótima (qual ação é melhor em cada estado);
+* os valores Q aprendidos;
+* a curva de recompensa (nível e até formato);
+* o tempo para convergir.
+
+**Intuições rápidas (o que tende a acontecer)**
+
+Em high (bateria alta)
+Quanto maior $r_{search}$​ e/ou maior $\alpha$ (buscar e continuar com bateria alta), mais forte a preferência por search.
+
+Se $r_{wait}$ se aproxima de $r_{search}$ e/ou α cai (buscar derruba pra low com frequência), wait pode virar melhor.
+
+Em low (bateria baixa):
+ Há três opções: search, wait, recharge.
+
+Aumente $\beta$ (buscar e continuar em low sem apagar) e/ou reduza a penalidade de resgate → search em low fica mais atraente.
+
+Penalidade de resgate mais forte (mais negativa) e/ou $\beta$ baixo → o robô tende a recharge.
+
+Se $r_{wait}$ sobe muito, wait pode vencer (especialmente se voltar ao high for pouco vantajoso).
+
+
 ### Resultados obtidos
+
+**Caso 1**
+
+```
+ALPHA = .7
+BETA = .6
+
+# Recompensas
+RSearch = 5
+RWait = 1
+```
+
+Os resultados obtidos não variaram muito mesmo com mudanças nos parâmetros. Em casos onde $r_{wait}$ se aproximava de $r_{search}$ o agente tendia a preferir a ação *wait* quando a bateria estava baixa; no mais, a tendência é sempre o agente preferir realizar o *search* com bateria no *high* e *recharge* com a bateria no *low*, como é possível ver na imagem abaixo
+
+![optimal_policy](readme-images/policy.jpeg "Política ótima encontrada pelo agente")
+
+Durante o aprendizado na maioria dos casos não foi possível observar uma curva clara de aprendizado, uma vez que as recompensas tendiam a uma mesma média mas tinham variações dentro de uma mesma faixa que pareciam ser aleatórias. Veja no gráfico abaixo:
+
+![rewards_evolution](readme-images/reward_evolution.jpeg "Evolução da recompensa ao longo das épocas de treinamento")
+
+Visando ter uma melhor observação, plotamos um gráfico com a média das recompensas totais a cada 30 épocas, e o resultado demonstra uma constante nas recompensas cercada de uma pequena variação:
+
+![average_rewards_evolution](readme-images/rewards_average_evolution.png "Evolução da média das recompensas a cada 30 épocas")
+
+
+
+
+
 

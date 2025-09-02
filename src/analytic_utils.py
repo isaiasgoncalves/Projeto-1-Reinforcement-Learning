@@ -80,5 +80,36 @@ class AnalyticUtils:
 
         plt.show()
 
+    @staticmethod
+    def plot_average_rewards(average_rewards: list):
+
+        """
+        Plota e salva um gráfico da evolução da média das recompensas a cada 30 épocas
+        """
+
+        # Usando Dataframes para facilitar no armazenamento e visualização
+        df = pd.DataFrame({
+            'Épocas' : range(len(average_rewards)),
+            'Média das recompensas totais' : average_rewards
+        })
+
+        # Define um tema para o gráfico
+        sns.set_theme(style='darkgrid')
+
+        # Cria o gráfico
+        plt.figure(figsize=(10,6)) # Tamanho padrão, pode ser mudado se necessário
+        sns.lineplot(x='Épocas', y='Média das recompensas totais', data=df)
+
+        # Nomeando os eixos e dando título ao gráfico
+        plt.xlabel('Grupo de 30 épocas')
+        plt.ylabel('Média das recompensas totais')
+        plt.ylim(bottom=0)
+        plt.title('Evolução da média das recompensas totais')
+
+        # Salva a figura em um arquivo de imagem
+        plt.savefig('rewards_average_evolution.png')
+
+        # Mostra o gráfico na interface de comando
+        plt.show()
 
 
